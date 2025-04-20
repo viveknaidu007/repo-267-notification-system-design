@@ -3,13 +3,15 @@ const Notification = require('../models/Notification');
 
 const getNotifications = async (req, res) => {
   try {
+    // validate userId
     const { userId } = req.query;
     if (!userId) {
       return res.status(400).json({ error: 'userId required' });
     }
 
+    // fetch notifications using string comparison
     const notifications = await Notification.find({ recipientId: userId })
-      .sort({ priority: -1, createdAt: -1 })
+      .sort({ createdAt: -1 })
       .limit(50);
     res.json(notifications);
   } catch (error) {
