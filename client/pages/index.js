@@ -15,7 +15,7 @@ export default function Home() {
   // render ui
   return (
     <div className="container">
-      <h1>Insyd Notification POC v2</h1>
+      <h1> Notification POC v2</h1>
       <div>
         <label>Select User: </label>
         <select value={selectedUserId} onChange={(e) => setSelectedUserId(e.target.value)}>
