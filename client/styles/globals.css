@@ -1,0 +1,37 @@
+/* reset default styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* container for main content */
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* heading style */
+  h1 {
+    text-align: center;
+  }
+  
+  /* form styles */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  input, select, button {
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  /* notification list styles */
+  .notification {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
