@@ -2,20 +2,18 @@
 import { useState } from 'react';
 import { createEvent } from '../lib/api';
 
-export default function EventForm({ users }) {
-  // state for form inputs
+export default function EventForm({ users, selectedUserId }) {
   const [actorId, setActorId] = useState('');
-  const [targetId, setTargetId] = useState('');
   const [eventType, setEventType] = useState('comment');
 
-  // handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!selectedUserId || !actorId) return;
     try {
       await createEvent({
         type: eventType,
         actorId,
-        targetId,
+        targetId: selectedUserId,
       });
       alert('Event created successfully');
     } catch (error) {
@@ -24,7 +22,6 @@ export default function EventForm({ users }) {
     }
   };
 
-  // render form
   return (
     <form onSubmit={handleSubmit}>
       <h2>Create Event</h2>
@@ -35,14 +32,6 @@ export default function EventForm({ users }) {
       </select>
       <select value={actorId} onChange={(e) => setActorId(e.target.value)}>
         <option value="">Select Actor</option>
-        {users.map((user) => (
-          <option key={user._id} value={user._id}>
-            {user.username}
-          </option>
-        ))}
-      </select>
-      <select value={targetId} onChange={(e) => setTargetId(e.target.value)}>
-        <option value="">Select Target</option>
         {users.map((user) => (
           <option key={user._id} value={user._id}>
             {user.username}

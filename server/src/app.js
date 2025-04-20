@@ -1,30 +1,21 @@
-// main express app
+// app setup
 const express = require('express');
-const cors = require('cors');
+const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const connectDB = require('./config/db');
-const eventRoutes = require('./routes/event');
-const notificationRoutes = require('./routes/notification');
+const routes = require('./routes');
+const cors = require('cors');
 
-// load env variables
 dotenv.config();
 
-// initialize app
 const app = express();
-
-// connect to mongodb
-connectDB();
-
-// middleware
-app.use(cors());
 app.use(express.json());
+app.use(cors()); // Enable CORS for all origins (for POC; restrict in production)
+app.use('/api', routes);
 
-// routes
-app.use('/api/events', eventRoutes);
-app.use('/api/notifications', notificationRoutes);
-
-// start server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`server running on port ${PORT}`);
-});
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => {
+    console.log('mongodb connected');
+    app.listen(PORT, () => console.log(`server running on port ${PORT}`));
+  })
+  .catch((error) => console.error('mongodb connection error:', error));
