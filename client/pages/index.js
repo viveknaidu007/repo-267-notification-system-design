@@ -42,7 +42,7 @@ export default function Home() {
 
   return (
     <div className="container">
-      <h1>Insyd Notification POC v3</h1>
+      <h1> Notification POC v3</h1>
       <div>
         <label>Select User: </label>
         <select value={selectedUserId} onChange={(e) => setSelectedUserId(e.target.value)}>
@@ -68,7 +68,7 @@ export default function Home() {
             type="email"
             value={newEmail}
             onChange={(e) => setNewEmail(e.target.value)}
-            placeholder="Email (optional)"
+            placeholder="Email"
           />
           <button type="submit">Submit</button>
           <button type="button" onClick={() => setShowAddUser(false)}>Cancel</button>
