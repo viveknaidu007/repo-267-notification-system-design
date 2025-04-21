@@ -1,7 +1,7 @@
 # Notification System Design for Insyd (Version 2)
 
 ## 1. Overview
-Insyd is a social web platform for the Architecture Industry, targeting 1 million DAUs from India, with initial focus on 100 DAUs. The notification system alerts users about activities (e.g., follows, comments, likes) from followed users, followers, or organic content discovery. Version 2 enhances user-specific notification display and introduces basic AI for prioritization.
+ The notification system alerts users about activities (e.g., follows, comments, likes) from followed users, followers, or organic content discovery. Version 2 enhances user-specific notification display and introduces basic AI for prioritization.
 
 ## 2. Requirements
 ### 2.1 Functional
@@ -82,11 +82,6 @@ Insyd is a social web platform for the Architecture Industry, targeting 1 millio
 - **Logic**: Assign priority (e.g., follow = 3, like = 2, comment = 1) and sort notifications.
 - **Future**: Integrate xAI API for advanced summarization.
 
-## 11. Future Improvements
-- Add WebSockets for real-time updates.
-- Implement a message queue (e.g., RabbitMQ).
-- Support multiple notification channels.
-- Enhance AI with machine learning.
 
 ## 12. Conclusion
 This design supports 100 DAUs with user-specific notifications and basic AI, using Next.js, Node.js, and MongoDB. It’s scalable to 1M DAUs with additional components.
